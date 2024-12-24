@@ -29,3 +29,34 @@
 // The function should be able to return negative values, they will be tested for.
 
 // CODE WARS EXCERCISE LINK -> https://www.codewars.com/kata/567610d21541a88876000024/train/javascript
+function thetaFormula(radius, arc, angle) {
+	// Helper function to check if a value is a valid number
+  const isValidNumber = (value) => typeof value === 'number' && !isNaN(value);
+  const args = [radius, arc, angle];
+  const questionMarks = args.filter(arg => arg === "?").length;
+  if (questionMarks > 2 || args.length < 2) return null;
+  const values = args.map(arg => (arg === "?" ? null : parseFloat(arg)));
+  let vAngle = values[0], vArc = values[1], vRadius = values[2];
+
+  let answer = null;
+      // Calculate missing values
+    if (questionMarks === 1) {
+        if (vAngle === null) {
+            // Calculate angle
+            answer = parseFloat((vArc / vRadius).toFixed(3));
+        } else if (vArc === null) {
+            // Calculate arc length
+           answer = parseFloat((vAngle * vRadius).toFixed(3));
+        } else if (vRadius === null) {
+            // Calculate radius
+            answer = parseFloat((vArc / vAngle).toFixed(3));
+        }
+    } else if (questionMarks === 0) {
+        // Check if all values are provided
+        if (isValidNumber(vAngle) && isValidNumber(vArc) && isValidNumber(vRadius)) {
+            //Seems the kata in codewars has a bug, as when the 3 values are given and are wrong, it asks for null instead of false
+            return vAngle === vArc / vRadius;
+        }
+    }
+  return isValidNumber(answer) ? answer : null;
+}

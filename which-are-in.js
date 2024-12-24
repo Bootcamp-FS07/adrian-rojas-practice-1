@@ -20,3 +20,18 @@
 // Beware: In some languages r must be without duplicates.
 
 // CODE WARS EXCERCISE LINK -> https://www.codewars.com/kata/550554fd08b86f84fe000a58
+function inArray(array1,array2){
+    //Use a set to avoid duplicates
+    result = new Set()
+
+    // Check each string in a1
+    a1.forEach(substring => {
+        // Check if it is a substring of any string in a2
+        if (a2.some(string => string.includes(substring))) {
+            result.add(substring);
+        }
+    });
+
+    // Convert the Set to an array and sort it
+    return Array.from(resultSet).sort();
+  }

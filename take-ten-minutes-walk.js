@@ -10,3 +10,9 @@
 // It will never give you an empty array (that's not a walk, that's standing still!).
 
 // CODE WARS EXCERCISE LINK -> https://www.codewars.com/kata/54da539698b8a2ad76000228/train/javascript
+function isValidWalk(walk) {
+    return (walk.length === 10)
+    && (walk.filter(s => s === 'n').length === walk.filter(s => s === 's').length)
+    && (walk.filter(s => s === 'e').length === walk.filter(s => s === 'w').length);
+
+  }
